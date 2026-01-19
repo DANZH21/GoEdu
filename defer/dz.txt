@@ -1,0 +1,26 @@
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("звезду хочу")
+	defer func() {
+		zvezda()
+	}()
+
+}
+
+func zvezda() {
+	fmt.Println("Не патрика хочу")
+	defer func() {
+		patrick()
+	}()
+}
+
+func patrick() {
+	fmt.Println("Не хочу в мейн")
+	defer func() {
+		main()
+	}()
+
+}

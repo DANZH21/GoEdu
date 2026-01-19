@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+	war := 4
+	ass := &war
+
+	fmt.Println(*ass)
+	UnPoints(ass)
+}
+
+func UnPoints(hash *int) {
+	*hash = 52
+	fmt.Println(*hash)
+}

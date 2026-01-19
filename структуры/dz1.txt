@@ -1,0 +1,20 @@
+package main
+
+import "github.com/k0kubun/pp"
+
+type phone struct {
+	Name  string
+	GB    float64
+	Games bool
+}
+
+func main() {
+	IPhone := phone{
+		Name:  "iphone",
+		GB:    128,
+		Games: true,
+	}
+	pp.Println(IPhone)
+}
+
+// можно без pp, просто я хуйней страдаю

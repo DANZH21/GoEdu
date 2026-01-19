@@ -1,0 +1,63 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+
+	"github.com/k0kubun/pp"
+)
+
+func main() {
+	Phone := map[string]string{}
+	Scanner := bufio.NewScanner(os.Stdin)
+	for {
+		if ok := Scanner.Scan(); !ok {
+
+		}
+
+		text := Scanner.Text()
+		cmd := strings.Fields(text)
+
+		switch cmd[0] {
+
+		case "добавить":
+			if len(cmd) < 3 {
+				if cmd[1] != "" || cmd[2] != "" {
+					Phone[cmd[1]] = cmd[2]
+				}
+			} else {
+				fmt.Println("нельзя создать контакт без имени или номера")
+			}
+
+		case "удалить":
+			if len(cmd) < 2 {
+				if _, ok := Phone[cmd[1]]; ok {
+					delete(Phone, cmd[1])
+				} else {
+					fmt.Println("Такого контакта не существует")
+				}
+			} else {
+				fmt.Println("лол чел имя напиши")
+			}
+		case "контакты":
+			pp.Println(Phone)
+
+		case "позвонить":
+			if len(cmd) < 2 {
+				if _, ok := Phone[cmd[1]]; ok {
+					fmt.Println("Вы позвонили вашему слоняре")
+				} else {
+					fmt.Println("Такого слоняры не существует")
+				}
+			} else {
+				fmt.Println("вы не можете позвонить никому")
+			}
+
+		default:
+			fmt.Println("Это не являеться командой")
+		}
+
+	}
+}

@@ -1,0 +1,25 @@
+package main
+
+import (
+	"fmt"
+	"math/rand/v2"
+)
+
+func main() {
+	word := "Тралалело трала"
+
+	for {
+		randik := rand.IntN(2)
+		if randik == 1 {
+			say(word)
+		} else {
+			break
+		}
+
+	}
+}
+
+func say(word string) {
+	fmt.Println(word)
+}
+

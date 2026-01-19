@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+	//af := 41
+	bools := true
+	float := 4.51
+
+	strings := &bools
+	fafa := &float
+
+	fmt.Println(strings, *strings, fafa, *fafa)
+}

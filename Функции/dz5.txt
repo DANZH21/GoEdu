@@ -1,0 +1,22 @@
+package main
+
+import "fmt"
+
+var say_my_name string
+
+func main() {
+	say_my_name = "Воултер вайт"
+	fmt.Println(say_my_name)
+	say()
+	fmt.Println(say_my_name)
+	sosal()
+	fmt.Println(say_my_name)
+}
+
+func say() {
+	say_my_name = "Пенисы"
+}
+
+func sosal() {
+	say_my_name = "ZALUPA3000"
+}

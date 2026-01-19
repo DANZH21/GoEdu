@@ -1,0 +1,132 @@
+package main
+
+import (
+	"DZGO/utils"
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+	"time"
+
+	"github.com/k0kubun/pp"
+)
+
+type Event struct {
+	input []string
+	err   string
+	Time  string
+}
+
+func main() {
+	tasks := []utils.Task{}
+
+	event := []string{}
+
+	Info := []Event{}
+	Scanner := bufio.NewScanner(os.Stdin)
+
+	for {
+		if ok := Scanner.Scan(); !ok {
+		}
+
+		command := Scanner.Text()
+
+		cmd := strings.Fields(command)
+
+		if len(cmd) == 0 {
+			break
+		}
+
+		// x := time.Now().Format("02.01.2006 15:04")
+
+		switch cmd[0] {
+
+		case "add":
+
+			if len(cmd) < 3 {
+				continue
+			} else {
+
+				describe := strings.Join(cmd[2:], " ")
+				task, err := utils.Add(cmd[1], describe)
+
+				if err != nil {
+					fmt.Println("ошибка", err)
+				}
+
+				tasks = append(tasks, utils.Task(*task))
+
+				fmt.Println("task добавлен")
+				event = append(event, "Добавлен таск \n")
+
+				Info = append(Info, Event{
+					input: cmd,
+					Time:  time.Now().Format("02.01.2006 15:04"),
+				})
+			}
+		case "del":
+			if len(cmd) < 3 {
+
+				for i := 0; i < len(tasks); i++ {
+					if tasks[i].Name == cmd[1] {
+						IsDelete := utils.Del(&tasks, i)
+
+						if IsDelete {
+							fmt.Println("Таск удалён")
+							event = append(event, "Удален таск %s", tasks[i].Name)
+							Info = append(Info, Event{
+								input: cmd,
+								Time:  time.Now().Format("02.01.2006 15:04"),
+							})
+						} else {
+							fmt.Println("Произошла ошибка")
+						}
+
+						break
+					}
+				}
+			}
+		case "done":
+			if len(cmd) < 2 {
+				break
+			}
+			for i := 0; i < len(tasks); i++ {
+				if tasks[i].Name == cmd[1] {
+					tasks[i].IsComplete = true
+					tasks[i].TimeComplete = time.Now().Format("02.01.2006 15:04")
+					event = append(event, "Выполнен таск %s", tasks[i].Name)
+					Info = append(Info, Event{
+						input: cmd,
+						Time:  time.Now().Format("02.01.2006 15:04"),
+					})
+
+				}
+			}
+
+		case "events":
+			pp.Println(Info)
+		case "list":
+			pp.Println(tasks)
+
+		case "search":
+			for i := 0; i < len(tasks); i++ {
+				if tasks[i].Name == cmd[1] {
+					Info = append(Info, Event{
+						input: cmd,
+						Time:  time.Now().Format("02.01.2006 15:04"),
+					})
+					pp.Println(tasks[i])
+				}
+			}
+		case "help":
+			helpText := "add {name} {desc}, list, del {name}, done {name}, events, exit"
+			fmt.Println(helpText)
+			Info = append(Info, Event{input: cmd, Time: time.Now().Format("02.01.2006 15:04")})
+		case "exit":
+			os.Exit(0)
+		default:
+			fmt.Println("неизвездная команда, напишите help")
+		}
+	}
+
+}

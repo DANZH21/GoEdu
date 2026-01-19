@@ -1,0 +1,67 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+
+	"github.com/k0kubun/pp"
+)
+
+var Product []string
+
+func main() {
+	Scanner := bufio.NewScanner(os.Stdin)
+	for {
+		fmt.Printf("введите команду: ")
+
+		if ok := Scanner.Scan(); !ok {
+
+		}
+
+		text := Scanner.Text()
+
+		command := strings.Fields(text)
+
+		//pp.Println(command)
+
+		//fmt.Println("Команда:", command[0])
+
+		if len(command) == 0 {
+			fmt.Println("Вы нечего не ввели")
+			continue
+		}
+
+		cmd := command[0]
+
+		// fmt.Println(text)
+
+		if cmd == "help" {
+			fmt.Println("Доступные команды:\n help \n добавить \n удалить \n список")
+		} else if cmd == "добавить" {
+			fmt.Println("Вы добавили", command[1])
+			for i := 1; i < len(command); i++ {
+				Product = append(Product, command[i])
+			}
+			pp.Println(Product)
+
+		} else if cmd == "удалить" {
+			fmt.Println("Вы хотите удалить:", command[1])
+			for i := 0; i < len(Product); i++ {
+				if command[1] == Product[i] {
+					Product = append(Product[:i], Product[i+1:]...)
+				}
+			}
+		} else if cmd == "список" {
+			fmt.Println("Ваш список продуктов")
+			if len(Product) == 0 {
+				fmt.Println("ваш список пустой")
+			} else {
+				pp.Println(Product)
+			}
+		} else {
+			fmt.Println("Доступные команды:\n help \n добавить \n удалить \n список")
+		}
+	}
+}

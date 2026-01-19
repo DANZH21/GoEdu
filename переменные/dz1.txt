@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+
+func main() {
+	num := 1
+	strigi := "буквы"
+	floatik := 3.14
+	boolik := true
+
+	var nums int = 5
+	var stringo string = "541"
+	var floats float64 = 3.14
+	var bolls bool = true
+
+	fmt.Println(nums)
+}

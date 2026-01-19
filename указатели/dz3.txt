@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+func main() {
+	boobsss := 3.00
+
+	boobss := &boobsss
+	fmt.Println("Пришла пациентка с %p", *boobss)
+	boob(boobss)
+}
+
+func boob(boobs *float64) {
+	fmt.Println("Начинаю закидывать дохуя имплантов и boobs")
+	fmt.Println("Импланты разорвали пациентку")
+	fmt.Println("Покойся с миром")
+
+	*boobs += 4
+
+	fmt.Println("Пациентка умерла с %p размером boobs", *boobs)
+}

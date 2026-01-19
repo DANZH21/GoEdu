@@ -1,0 +1,62 @@
+package main
+
+import "fmt"
+
+func main() {
+
+	/*
+		age := 45
+			if age > 30 {
+				fmt.Println("ебать ты дед")
+			} else {
+				fmt.Println("молодой бля")
+			} */
+
+	/*
+		age := 45
+			if age >= 18 {
+				fmt.Println("я продам тебе пиво")
+			} else if age <= 12 {
+				fmt.Println("Молой я тебя лопатой уебу")
+			} else {
+				fmt.Println("с 18 далбоёб, в казахстане с 21")
+			} */
+
+	/*
+
+		liters := 3.01
+
+		if liters > 3.0 || liters < 1.0 {
+			fmt.Println("Ебать ты фрик")
+		} else {
+			fmt.Println("Ты знаешь толк в пиве")
+		}
+	*/
+
+	/*
+		beercool := true
+		croucscool := false
+
+		if beercool == true && croucscool == true {
+			fmt.Println("Идём гулять")
+		} else {
+			fmt.Println("Пошёл нахуй не идём")
+		}
+	*/
+
+	/*
+		weather := 3
+
+		if weather < 3 {
+			fmt.Println("Идём на гонку")
+		} else {
+
+		}
+	*/
+
+	Premium := false
+
+	if !Premium {
+		fmt.Println("Купи прем")
+	}
+}

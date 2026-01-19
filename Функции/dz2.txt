@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+	hello("Алекс", 4)
+
+	hello("Миша", 2)
+}
+
+func hello(Name string, room int) {
+	fmt.Printf("Здравствуйте, %s! Добро пожаловать в наш отель.\n", Name)
+	fmt.Printf("Я провожу вас в ваш номер №%s. Прошу за мной!\n", Name)
+}

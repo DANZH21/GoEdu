@@ -1,0 +1,28 @@
+package main
+
+func main() {
+
+	/*
+		for i := 1; i <= 10; i++ {
+			fmt.Println("fortnite balls", i)
+		}
+	*/
+	/*
+		score := 0
+		for {
+			fmt.Println("Куб катиться вперёд")
+			fmt.Println("Куб прыгает")
+			n := rand.Intn(2)
+			if n == 1 {
+				score++
+				fmt.Println("Куб успешно прыгнул", score)
+			} else {
+				fmt.Println("Вы умерли, ваш счёт", score)
+				break
+			}
+
+		}
+	*/
+
+	
+}
